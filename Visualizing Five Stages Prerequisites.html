@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5 Prerequisites for Improvement</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0c0f;
+    --surface: #16161a;
+    --border: #2a2a32;
+    --text: #e8e6e3;
+    --text-dim: #7f7f8a;
+    --accent-1: #ff6b4a;
+    --accent-2: #f0a500;
+    --accent-3: #4ecdc4;
+    --accent-4: #7b68ee;
+    --accent-5: #ff4081;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 32px 80px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+
+  header h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 3.2rem;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--text) 0%, var(--text-dim) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  header p {
+    color: var(--text-dim);
+    font-size: 1.05rem;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .funnel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* The vertical line connecting stages */
+  .funnel::before {
+    content: '';
+    position: absolute;
+    left: 36px;
+    top: 40px;
+    bottom: 40px;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      var(--accent-1) 0%,
+      var(--accent-2) 25%,
+      var(--accent-3) 50%,
+      var(--accent-4) 75%,
+      var(--accent-5) 100%
+    );
+    opacity: 0.3;
+  }
+
+  .stage {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 0;
+    align-items: start;
+    position: relative;
+    padding: 20px 0;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .stage:nth-child(1) { animation-delay: 0.15s; }
+  .stage:nth-child(2) { animation-delay: 0.35s; }
+  .stage:nth-child(3) { animation-delay: 0.55s; }
+  .stage:nth-child(4) { animation-delay: 0.75s; }
+  .stage:nth-child(5) { animation-delay: 0.95s; }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .stage-number {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.5rem;
+    position: relative;
+    z-index: 2;
+    margin-left: 10px;
+    flex-shrink: 0;
+    border: 2px solid;
+    background: var(--bg);
+  }
+
+  .stage:nth-child(1) .stage-number { border-color: var(--accent-1); color: var(--accent-1); }
+  .stage:nth-child(2) .stage-number { border-color: var(--accent-2); color: var(--accent-2); }
+  .stage:nth-child(3) .stage-number { border-color: var(--accent-3); color: var(--accent-3); }
+  .stage:nth-child(4) .stage-number { border-color: var(--accent-4); color: var(--accent-4); }
+  .stage:nth-child(5) .stage-number { border-color: var(--accent-5); color: var(--accent-5); }
+
+  .stage-content {
+    padding: 14px 28px 28px;
+    border-radius: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stage-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+  }
+
+  .stage:nth-child(1) .stage-content::before { background: linear-gradient(90deg, var(--accent-1), transparent); }
+  .stage:nth-child(2) .stage-content::before { background: linear-gradient(90deg, var(--accent-2), transparent); }
+  .stage:nth-child(3) .stage-content::before { background: linear-gradient(90deg, var(--accent-3), transparent); }
+  .stage:nth-child(4) .stage-content::before { background: linear-gradient(90deg, var(--accent-4), transparent); }
+  .stage:nth-child(5) .stage-content::before { background: linear-gradient(90deg, var(--accent-5), transparent); }
+
+  .stage-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: inline-block;
+  }
+
+  .stage:nth-child(1) .stage-label { color: var(--accent-1); }
+  .stage:nth-child(2) .stage-label { color: var(--accent-2); }
+  .stage:nth-child(3) .stage-label { color: var(--accent-3); }
+  .stage:nth-child(4) .stage-label { color: var(--accent-4); }
+  .stage:nth-child(5) .stage-label { color: var(--accent-5); }
+
+  .stage-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.65rem;
+    font-weight: 400;
+    line-height: 1.25;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .stage-desc {
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .stage-desc em {
+    color: var(--text);
+    font-style: italic;
+    font-family: 'Instrument Serif', serif;
+    font-size: 1em;
+  }
+
+  /* Connector arrows between stages */
+  .connector {
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    height: 8px;
+    opacity: 0;
+    animation: fadeUp 0.4s ease forwards;
+  }
+  .connector:nth-of-type(2) { animation-delay: 0.25s; }
+  .connector:nth-of-type(4) { animation-delay: 0.45s; }
+  .connector:nth-of-type(6) { animation-delay: 0.65s; }
+  .connector:nth-of-type(8) { animation-delay: 0.85s; }
+
+  .connector svg {
+    width: 14px;
+    height: 14px;
+    opacity: 0.25;
+  }
+
+  /* Drop-off annotation */
+  .drop-off {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    opacity: 0.5;
+    font-style: italic;
+    text-align: right;
+    display: none;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    margin-top: 64px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+    animation-delay: 1.2s;
+  }
+
+  .footer-line {
+    width: 64px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-4), var(--accent-5));
+    margin: 0 auto 20px;
+    border-radius: 1px;
+  }
+
+  .footer p {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    font-style: italic;
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.15rem;
+  }
+
+  /* Funnel width narrowing effect */
+  .stage:nth-child(1) .stage-content { margin-right: 0; }
+  .stage:nth-child(2) .stage-content { margin-right: 24px; }
+  .stage:nth-child(3) .stage-content { margin-right: 48px; }
+  .stage:nth-child(4) .stage-content { margin-right: 72px; }
+  .stage:nth-child(5) .stage-content { margin-right: 96px; }
+
+  @media (max-width: 640px) {
+    .container { padding: 40px 16px 60px; }
+    header h1 { font-size: 2.2rem; }
+    .stage { grid-template-columns: 56px 1fr; }
+    .stage-number { width: 40px; height: 40px; font-size: 1.2rem; }
+    .funnel::before { left: 28px; }
+    .connector { padding-left: 22px; }
+    .stage-title { font-size: 1.3rem; }
+    .stage:nth-child(2) .stage-content { margin-right: 12px; }
+    .stage:nth-child(3) .stage-content { margin-right: 24px; }
+    .stage:nth-child(4) .stage-content { margin-right: 36px; }
+    .stage:nth-child(5) .stage-content { margin-right: 48px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>The 5 Prerequisites<br>for Improvement</h1>
+    <p>A filtering funnel — each stage narrows the field. Most people never make it past stage two.</p>
+  </header>
+
+  <div class="funnel">
+    <div class="stage">
+      <div class="stage-number">1</div>
+      <div class="stage-content">
+        <div class="stage-label">Awareness</div>
+        <div class="stage-title">Do they believe there's a problem?</div>
+        <div class="stage-desc">The most fundamental gate. If someone doesn't even acknowledge a problem exists, nothing else matters. <em>You can't fix what you refuse to see.</em></div>
+      </div>
+    </div>
+
+    <div class="connector">
+      <svg viewBox="0 0 14 14" fill="none"><path d="M7 2v10M3 8l4 4 4-4" stroke="#7f7f8a" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </div>
+
+    <div class="stage">
+      <div class="stage-number">2</div>
+      <div class="stage-content">
+        <div class="stage-label">Desire</div>
+        <div class="stage-title">Do they actually want to solve it?</div>
+        <div class="stage-desc">Knowing a problem exists and <em>wanting</em> to fix it are completely different things. Many people are comfortable with their dysfunction — or at least more comfortable than they'd be doing the work.</div>
+      </div>
+    </div>
+
+    <div class="connector">
+      <svg viewBox="0 0 14 14" fill="none"><path d="M7 2v10M3 8l4 4 4-4" stroke="#7f7f8a" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </div>
+
+    <div class="stage">
+      <div class="stage-number">3</div>
+      <div class="stage-content">
+        <div class="stage-label">Self-Awareness</div>
+        <div class="stage-title">Do they see their own role in it?</div>
+        <div class="stage-desc">Can they look in the mirror? Do they recognise how they contributed to the problem, or how they're reacting to it? <em>Without ownership, solutions become blame games.</em></div>
+      </div>
+    </div>
+
+    <div class="connector">
+      <svg viewBox="0 0 14 14" fill="none"><path d="M7 2v10M3 8l4 4 4-4" stroke="#7f7f8a" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </div>
+
+    <div class="stage">
+      <div class="stage-number">4</div>
+      <div class="stage-content">
+        <div class="stage-label">Capability</div>
+        <div class="stage-title">Can they figure out a real solution?</div>
+        <div class="stage-desc">Not surface-level fixes. Not generic advice. An <em>actual, nuanced</em> solution that accounts for the real complexity of the situation.</div>
+      </div>
+    </div>
+
+    <div class="connector">
+      <svg viewBox="0 0 14 14" fill="none"><path d="M7 2v10M3 8l4 4 4-4" stroke="#7f7f8a" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </div>
+
+    <div class="stage">
+      <div class="stage-number">5</div>
+      <div class="stage-content">
+        <div class="stage-label">Execution</div>
+        <div class="stage-title">Can they actually execute?</div>
+        <div class="stage-desc">The final filter. Plans mean nothing without follow-through. <em>Can they turn intention into sustained action?</em></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-line"></div>
+    <p>Each stage filters out more people. The few who clear all five? They improve.</p>
+  </div>
+</div>
+</body>
+</html>
